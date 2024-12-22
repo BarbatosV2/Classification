@@ -8,10 +8,10 @@ from model import ImageClassifier
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load model
-class_names = ['chihuahua', 'japanese_spaniel', 'maltese']  # Replace with your class names
+class_names = ['Chihuahua', 'Japanese_spaniel', 'Maltese_dog']  # class names
 num_classes = len(class_names)
 model = ImageClassifier(num_classes=num_classes).to(device)
-model.load_state_dict(torch.load("model.pth", map_location=device))
+model.load_state_dict(torch.load("model/model_final.pth", map_location=device))
 model.eval()
 
 # Define transformation

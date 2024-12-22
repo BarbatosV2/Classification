@@ -17,12 +17,13 @@ class ImageAnnotationDataset(Dataset):
                 if file.lower().endswith(('.png', '.jpg', '.jpeg')):  # Handle case-insensitive extensions
                     image_path = Path(root) / file
                     class_folder = Path(root).name  # Get class folder name
-                    annotation_file = f"{file.rsplit('.', 1)[0]}.xml"  # Match filename, replace extension
+                    annotation_file = file.rsplit('.', 1)[0]  # Remove file extension, no need to add '.file'
+
+                    # Build the full annotation file path
                     annotation_path = Path(annotation_folder) / class_folder / annotation_file
 
-                    # Debugging: Print paths after normalizing
-                    print(f"Image Path: {image_path}")
-                    print(f"Annotation Path: {annotation_path}")
+                    print(f"Checking image: {image_path}")
+                    print(f"Looking for annotation: {annotation_path}")
 
                     if annotation_path.exists():  # Only add if annotation exists
                         self.image_paths.append(str(image_path))
@@ -30,6 +31,8 @@ class ImageAnnotationDataset(Dataset):
                     else:
                         print(f"Annotation file not found for image: {image_path}")
 
+        if len(self.image_paths) == 0:
+            print("No valid samples found in the dataset!")
 
     def __len__(self):
         return len(self.image_paths)
