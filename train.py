@@ -12,7 +12,7 @@ batch_size = 32
 learning_rate = 0.001
 num_epochs = 10
 img_height, img_width = 64, 64
-class_names = ['Chihuahua', 'Japanese_spaniel', 'Maltese_dog']  # Replace with your class names
+class_names = ['Chihuahua', 'Japanese_spaniel', 'Maltese_dog']  # class names
 
 # Device configuration
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
