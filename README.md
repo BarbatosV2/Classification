@@ -42,7 +42,7 @@ py train.py
 
 This will used the trained pth called model_final.pth 
 ```
-py check.py imagefile/image.jpg
+py check.py imagefile_location/image.jpg
 ```
 
 # Final Result of Training (Epoch 20)
